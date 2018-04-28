@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "PedidosServlet", urlPatterns = {"/ProjetoBuddyServlet.html", "/anfitriao.html","/principal.html",
-                                    "/novoAnfitriao.html"})
+                                    "/novoAnfitriao.html", "/novoIntercambista.html", "/intercambistas.html"})
 public class ProjetoBuddyServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -21,6 +21,10 @@ public class ProjetoBuddyServlet extends HttpServlet {
              princpal(request, response);   
         }else if("/novoAnfitriao.html".equals(request.getServletPath())){
              novoAnfitriao(request, response);   
+        }else if("/novoIntercambista.html".equals(request.getServletPath())){
+             novoIntercambista(request, response);   
+        }else if("/intercambistas.html".equals(request.getServletPath())){
+             listaIntercambistas(request, response);   
         }
     }
     
@@ -40,7 +44,22 @@ public class ProjetoBuddyServlet extends HttpServlet {
             }else{
                 ListaDeAnfitrioes.getInstance().set(Integer.parseInt(request.getParameter("id")), anf);
             }
-            response.sendRedirect("anfitriao.html");             
+            response.sendRedirect("anfitriao.html");     
+            
+        }else if ("/novoIntercambista.html".equals(request.getServletPath())){
+            String nome = request.getParameter("nome");
+            String paisOrigem = request.getParameter("paisOrigem");
+            String idiomas = request.getParameter("idiomas");
+            
+            
+            Intercambista inter = new Intercambista(nome, paisOrigem, idiomas);
+            
+            if ("-1".equals(request.getParameter("id"))){                
+                ListaDeIntercambistas.getInstance().add(inter);    
+            }else{
+                ListaDeIntercambistas.getInstance().set(Integer.parseInt(request.getParameter("id")), inter);
+            }
+            response.sendRedirect("intercambistas.html");             
         }
     }
         
@@ -69,4 +88,22 @@ public class ProjetoBuddyServlet extends HttpServlet {
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/novoAnfitriao.jsp");
         despachante.forward(request, response);
     }
+
+    private void listaIntercambistas(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Intercambista> intercambistas = new ListaDeIntercambistas().getInstance();
+        request.setAttribute("intercambistas", intercambistas);
+
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/intercambistas.jsp");
+        despachante.forward(request, response);
+    }
+
+    private void novoIntercambista(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int i = Integer.parseInt(request.getParameter("id"));
+        if (i >= 0){
+            List<Intercambista> intercambistas = new ListaDeIntercambistas().getInstance();
+            request.setAttribute("intercambistas", intercambistas.get(i));    
+        }        
+        
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/novoIntercambista.jsp");
+        despachante.forward(request, response);}
 }
