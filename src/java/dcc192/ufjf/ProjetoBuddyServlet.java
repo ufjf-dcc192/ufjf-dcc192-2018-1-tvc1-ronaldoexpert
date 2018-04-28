@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "PedidosServlet", urlPatterns = {"/ProjetoBuddyServlet.html", "/anfitriao.html","/principal.html",
-        "/novoAnfitriao.html", "/novoIntercambista.html", "/intercambistas.html", "/hospedagens.html"})
+        "/novoAnfitriao.html", "/novoIntercambista.html", "/intercambistas.html", "/hospedagens.html", "/novaHospedagem.html"})
 public class ProjetoBuddyServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -27,6 +27,8 @@ public class ProjetoBuddyServlet extends HttpServlet {
              listaIntercambistas(request, response);   
         }else if("/hospedagens.html".equals(request.getServletPath())){
              listaHospedagem(request, response);   
+        }else if("/novaHospedagem.html".equals(request.getServletPath())){
+             novaHospedagem(request, response);   
         }
     }
     
@@ -107,13 +109,20 @@ public class ProjetoBuddyServlet extends HttpServlet {
         }        
         
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/novoIntercambista.jsp");
-        despachante.forward(request, response);}
+        despachante.forward(request, response);
+    }
 
     private void listaHospedagem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Hospedagem> hospedagens = new ListaDeHospedagens().getInstance();
         request.setAttribute("hospedagens", hospedagens);
         
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/hospedagens.jsp");
+        despachante.forward(request, response);
+    }
+
+    private void novaHospedagem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/novaHospedagem.jsp");
         despachante.forward(request, response);
     }
 }

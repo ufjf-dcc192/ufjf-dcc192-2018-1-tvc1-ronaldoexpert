@@ -31,7 +31,7 @@
                         i++;
                      }
                     %> 
-                    <TR><td COLSPAN = 7><a href="novoAnfitriao.html?id=-1" class="edit">Adicionar Hospedagem</a></td></TR>
+                    <TR><td COLSPAN = 7><a href="novaHospedagem.html" class="edit">Adicionar Hospedagem</a></td></TR>
                 </tbody>
             </table>
         </div>
