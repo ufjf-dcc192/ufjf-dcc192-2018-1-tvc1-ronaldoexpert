@@ -17,6 +17,7 @@
                 <label>Tipo Moradia <input type="text" name="tipoMoradia" value="<%=anf.getTipoMoradia() %>" /> </label>
                 <label>Descrição <input type="text" name="descricao" value="<%=anf.getDescricao() %>" size="70"/> </label>
                 <label>Disponível <input type="text" name="disponivel" value="<%=anf.getDisponivel() %>" /> </label>
+                <label>Telefone <input type="text" name="telefone" value="<%=anf.getTelefone()%>" /> </label>
             <%
             }else{
             %>
@@ -24,6 +25,7 @@
                 <label>Tipo Moradia <input type="text" name="tipoMoradia" value="" /> </label>
                 <label>Descrição <input type="text" name="descricao" value="" /> </label>
                 <label>Disponível <input type="text" name="disponivel" value="" /> </label>
+                <label>Telefone <input type="text" name="telefone" value="" /> </label>
             <%
             }
             %>   

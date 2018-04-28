@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "PedidosServlet", urlPatterns = {"/ProjetoBuddyServlet.html", "/anfitriao.html","/principal.html",
-                                    "/novoAnfitriao.html", "/novoIntercambista.html", "/intercambistas.html"})
+        "/novoAnfitriao.html", "/novoIntercambista.html", "/intercambistas.html", "/hospedagem.html"})
 public class ProjetoBuddyServlet extends HttpServlet {
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
@@ -35,9 +35,10 @@ public class ProjetoBuddyServlet extends HttpServlet {
             String tipoMoradia = request.getParameter("tipoMoradia");
             String descricao = request.getParameter("descricao");
             String disponivel = request.getParameter("disponivel");
+            String telefone = request.getParameter("telefone");
             
             
-            Anfitriao anf = new Anfitriao(nome, tipoMoradia, descricao, disponivel);
+            Anfitriao anf = new Anfitriao(nome, tipoMoradia, descricao, disponivel, telefone);
             
             if ("-1".equals(request.getParameter("id"))){                
                 ListaDeAnfitrioes.getInstance().add(anf);    
@@ -61,8 +62,7 @@ public class ProjetoBuddyServlet extends HttpServlet {
             }
             response.sendRedirect("intercambistas.html");             
         }
-    }
-        
+    }        
     
     
     private void listarAnfitrioes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
