@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="css/colour.css">
 <link rel="stylesheet" href="css/template.css">
 
-<h3>Edição de Produtos</h3>
+<h3>Edição de Anfitrião</h3>
 <div class="grid_16">
     <div class="grid_4">
         <form method="post">    

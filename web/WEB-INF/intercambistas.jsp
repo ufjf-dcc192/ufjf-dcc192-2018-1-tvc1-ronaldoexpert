@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="css/colour.css">
 <link rel="stylesheet" href="css/template.css">
 
-    <h3>Lista de Mesas</h3>
+    <h3>Lista de Intercambistas</h3>
         <div class="grid_16">
             <table>
                 <thead>    
