@@ -13,17 +13,17 @@
                 Anfitriao anf;
                 anf = (Anfitriao)request.getAttribute("anfitrioes");        
             %> 
-                <label>Nome <input type="text" name="descricao" value="<%=anf.getNome() %>" /> </label>
-                <label>Tipo Moradia <input type="text" name="descricao" value="<%=anf.getTipoMoradia() %>" /> </label>
-                <label>Descrição <input type="text" name="descricao" value="<%=anf.getDescricao() %>" /> </label>
-                <label>Disponível <input type="text" name="descricao" value="<%=anf.getDisponivel() %>" /> </label>
+                <label>Nome <input type="text" name="nome" value="<%=anf.getNome() %>" /> </label>
+                <label>Tipo Moradia <input type="text" name="tipoMoradia" value="<%=anf.getTipoMoradia() %>" /> </label>
+                <label>Descrição <input type="text" name="descricao" value="<%=anf.getDescricao() %>" size="70"/> </label>
+                <label>Disponível <input type="text" name="disponivel" value="<%=anf.getDisponivel() %>" /> </label>
             <%
             }else{
             %>
-                <label>Nome <input type="text" name="descricao" value="" /> </label>
-                <label>Tipo Moradia <input type="text" name="descricao" value="" /> </label>
+                <label>Nome <input type="text" name="nome" value="" /> </label>
+                <label>Tipo Moradia <input type="text" name="tipoMoradia" value="" /> </label>
                 <label>Descrição <input type="text" name="descricao" value="" /> </label>
-                <label>Disponível <input type="text" name="descricao" value="" /> </label>
+                <label>Disponível <input type="text" name="disponivel" value="" /> </label>
             <%
             }
             %>   

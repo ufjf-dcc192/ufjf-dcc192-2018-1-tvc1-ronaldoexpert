@@ -24,6 +24,28 @@ public class ProjetoBuddyServlet extends HttpServlet {
         }
     }
     
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if ("/novoAnfitriao.html".equals(request.getServletPath())){
+            String nome = request.getParameter("nome");
+            String tipoMoradia = request.getParameter("tipoMoradia");
+            String descricao = request.getParameter("descricao");
+            String disponivel = request.getParameter("disponivel");
+            
+            
+            Anfitriao anf = new Anfitriao(nome, tipoMoradia, descricao, disponivel);
+            
+            if ("-1".equals(request.getParameter("id"))){                
+                ListaDeAnfitrioes.getInstance().add(anf);    
+            }else{
+                ListaDeAnfitrioes.getInstance().set(Integer.parseInt(request.getParameter("id")), anf);
+            }
+            response.sendRedirect("anfitriao.html");             
+        }
+    }
+        
+    
+    
     private void listarAnfitrioes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Anfitriao> anfitrioes = new ListaDeAnfitrioes().getInstance();
         request.setAttribute("anfitrioes", anfitrioes);
