@@ -110,6 +110,8 @@ public class ProjetoBuddyServlet extends HttpServlet {
         despachante.forward(request, response);}
 
     private void listaHospedagem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<Hospedagem> hospedagens = new ListaDeHospedagens().getInstance();
+        request.setAttribute("hospedagens", hospedagens);
         
         RequestDispatcher despachante = request.getRequestDispatcher("/WEB-INF/hospedagens.jsp");
         despachante.forward(request, response);
